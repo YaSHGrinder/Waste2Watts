@@ -1,7 +1,5 @@
 # Waste2Watts — Turn Food Waste Into Clean Energy
 
-Premium, investor-ready website for a sustainability startup that converts hostel food waste into biogas, fertilizer, and carbon credits.
-
 ## Tech Stack
 
 - **Frontend:** Next.js 16 (App Router) + Tailwind CSS v4 + Framer Motion + Recharts

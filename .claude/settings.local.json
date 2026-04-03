@@ -22,7 +22,11 @@
       "Bash(do grep:*)",
       "Bash(find . -name *.tsx)",
       "Bash(do n=50000)",
-      "Read(//c/Users/yash/Desktop/Waste2Watts/frontend/NR>2 && /**)"
+      "Read(//c/Users/yash/Desktop/Waste2Watts/frontend/NR>2 && /**)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"Resolve merge conflict for README.md:*)",
+      "Bash(git status:*)",
+      "Bash(python -c:*)"
     ]
   }
 }
