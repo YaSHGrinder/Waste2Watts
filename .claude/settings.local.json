@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npx create-next-app@latest frontend --typescript --tailwind --app --eslint --no-src-dir --import-alias \"@/*\")",
+      "Bash(cd:*)",
+      "Bash(npm install:*)",
+      "Bash(npm init:*)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\components\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\lib\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\dashboard\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\public\")",
+      "Bash(find C:UsersyashDesktopWaste2Wattsfrontendappcomponents -name *.tsx)",
+      "Bash(find C:UsersyashDesktopWaste2Wattsbackendsrc -name *.js)",
+      "Bash(while read:*)",
+      "Bash(do echo:*)",
+      "Bash(done)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next:*)",
+      "Bash(npm run:*)",
+      "Bash(grep:*)",
+      "Bash(do grep:*)",
+      "Bash(find . -name *.tsx)",
+      "Bash(do n=50000)",
+      "Read(//c/Users/yash/Desktop/Waste2Watts/frontend/NR>2 && /**)"
+    ]
+  }
+}
