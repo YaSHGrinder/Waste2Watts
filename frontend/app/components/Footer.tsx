@@ -84,15 +84,25 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-neutral-500">
                 <Mail size={14} className="text-green-500 flex-shrink-0" />
-                hello@waste2watts.in
+                <a href="mailto:Panchalyash1319@gmail.com" className="hover:text-white transition-colors">
+                  Panchalyash1319@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-neutral-500">
                 <Phone size={14} className="text-green-500 flex-shrink-0" />
-                +91 98765 43210
+                <a href="tel:+919953636923" className="hover:text-white transition-colors">
+                  +91 99536 36923
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-sm text-neutral-500">
+                <Phone size={14} className="text-green-500 flex-shrink-0" />
+                <a href="tel:+918305059528" className="hover:text-white transition-colors">
+                  +91 83050 59528
+                </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-neutral-500">
                 <MapPin size={14} className="text-green-500 flex-shrink-0" />
-                Bangalore, India
+                Solan, India
               </li>
             </ul>
           </div>
