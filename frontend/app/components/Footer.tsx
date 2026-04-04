@@ -34,7 +34,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-1 mt-4 text-xs text-neutral-600">
               <Leaf size={12} className="text-green-500" />
-              <span>Built in India for a sustainable future</span>
+              <span>Building India&apos;s decentralized waste infrastructure</span>
             </div>
           </div>
 

@@ -19,30 +19,30 @@ export const metadata: Metadata = {
 const roadmapSteps = [
   {
     step: "01",
-    title: "Pilot — 2 TPD Plant",
+    title: "Phase 1 — Pilot",
     description:
-      "We begin with a 2 tons per day pilot plant, focused on nearby hostels. This phase serves as a real-world validation of our model — testing waste collection systems, digestion efficiency, output conversion, and digital tracking.",
+      "A single 2 TPD anaerobic digestion plant serving 4 hostels in Solan, HP. Validate waste collection workflows, digestion efficiency (~92%), biogas and fertilizer yields, and the real-time impact tracking dashboard. Target: process 600 kg/day by Q2 2026. Budget: ₹8–12L capex per plant.",
     icon: <Lightbulb size={24} />,
   },
   {
     step: "02",
-    title: "Cluster Expansion — 5 TPD Plants",
+    title: "Phase 2 — Cluster Expansion",
     description:
-      "We scale by building multiple 5 TPD plants, forming localized clusters serving 5–10 institutional hostels each, ensuring efficient logistics and operations.",
+      "3 × 5 TPD plants forming clusters across institutional hotspots in Noida, Gurugram, and Chandigarh. Each cluster serves 5–10 hostels within a 10 km radius. Target: 15 hostels, 15 TPD, ₹12–18L monthly revenue.",
     icon: <MapPin size={24} />,
   },
   {
     step: "03",
-    title: "Nationwide Network",
+    title: "Phase 3 — Scale Beyond Hostels",
     description:
-      "We expand into a nationwide network of decentralized plants, creating a connected ecosystem for large-scale food waste management.",
+      "Expand sourcing into grocery retail chains, banquet halls, hotels, and institutional cafeterias. 10+ plant clusters across 3 states — Himachal Pradesh, Delhi NCR, and Maharashtra. Target: 50+ TPD, ₹50L+/mo carbon revenue from Gold Standard / VERRA certified credits.",
     icon: <BarChart3 size={24} />,
   },
   {
     step: "04",
-    title: "Carbon Credits & Supply Chain",
+    title: "Phase 4 — National Network",
     description:
-      "We target unused food across the supply chain and enter large-scale carbon credit agreements, strengthening our position in the food waste management market.",
+      "A nationwide network of decentralized waste-to-energy clusters. 100+ partners across 6+ states. Standardized modular plant design enabling rapid deployment in any city. Carbon credits trading at scale on India's Carbon Credit Trading Scheme and international voluntary markets.",
     icon: <Zap size={24} />,
   },
 ];
@@ -67,8 +67,8 @@ export default function AboutPage() {
               About Waste2Watts
             </span>
             <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              Turning Food Waste Into{" "}
-              <span className="gradient-text">Clean Energy</span>
+              Building India&apos;s Waste{" "}
+              <span className="gradient-text">Infrastructure</span>
             </h1>
             <p className="mt-6 text-neutral-400 text-lg leading-relaxed">
               Waste2Watts is a climate-tech startup founded in 2026 with a bold
@@ -200,13 +200,11 @@ export default function AboutPage() {
                 CEO & Founder
               </span>
               <p className="text-neutral-400 text-sm leading-relaxed mt-4">
-                Based in Narela, Delhi, Yash is the visionary behind Waste2Watts.
-                Currently pursuing B.Tech in Computer Science with a
-                specialization in Artificial Intelligence, he focuses on building
-                scalable, technology-driven solutions for real-world
-                environmental challenges. His goal is to create a nationwide
-                impact by integrating clean energy systems with intelligent
-                tracking platforms.
+                Building infrastructure to solve India&apos;s food waste crisis.
+                Currently leading pilot deployment in Solan, HP — focused on
+                validating plant economics, operational workflows, and the impact
+                tracking platform. Goal: prove the unit economics at pilot scale,
+                then replicate across India&apos;s 50,000+ hostels and institutions.
               </p>
             </div>
 
@@ -219,11 +217,11 @@ export default function AboutPage() {
                 Co-Founder
               </span>
               <p className="text-neutral-400 text-sm leading-relaxed mt-4">
-                Based in Gwalior, Aditya plays a key role in shaping the
-                strategic and operational direction of Waste2Watts. He
-                contributes to business development, partnerships, and scaling
-                strategies, ensuring the company evolves into a large-scale,
-                impactful venture.
+                Driving partnerships, business development, and scaling strategy.
+                Focused on getting the right institutional partnerships in place so
+                Waste2Watts can grow from a single pilot into a nationwide network
+                — building the relationships that turn this from an idea into
+                operational infrastructure.
               </p>
             </div>
           </div>

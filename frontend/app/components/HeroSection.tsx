@@ -57,7 +57,7 @@ export default function HeroSection({ summary }: { summary: Summary }) {
           >
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             <span className="text-sm text-green-400 font-medium">
-              India&apos;s First Hostel Waste-to-Energy Network
+              India&apos;s Waste Infrastructure — Launching 2026
             </span>
           </motion.div>
 
@@ -66,8 +66,8 @@ export default function HeroSection({ summary }: { summary: Summary }) {
             variants={itemUp}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-6"
           >
-            <span className="block">Turn Food Waste</span>
-            <span className="block gradient-text mt-2">Into Clean Energy</span>
+            <span className="block">Waste is</span>
+            <span className="block gradient-text mt-2">Revenue.</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -75,9 +75,10 @@ export default function HeroSection({ summary }: { summary: Summary }) {
             variants={itemUp}
             className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Track your impact. Power a sustainable future. We convert hostel
-            food waste into biogas, fertilizer, and verified carbon
-            credits.
+            India wastes 68.8 million tonnes of food every year. We collect it
+            from hostel messes, process it at decentralized plants, and turn it
+            into biogas, organic fertilizer, and tradeable carbon credits.
+            One hostel at a time.
           </motion.p>
 
           {/* CTAs */}
@@ -86,10 +87,10 @@ export default function HeroSection({ summary }: { summary: Summary }) {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <a
-              href="/dashboard"
+              href="#impact"
               className="group flex items-center gap-2 px-8 py-4 text-base font-semibold text-black bg-gradient-to-r from-green-400 to-green-500 rounded-full hover:from-green-300 hover:to-green-400 transition-all hover:shadow-xl hover:shadow-green-500/25"
             >
-              Track Your Impact
+              Calculate Your Impact
               <ArrowRight
                 size={18}
                 className="transition-transform group-hover:translate-x-1"
@@ -99,7 +100,7 @@ export default function HeroSection({ summary }: { summary: Summary }) {
               href="#contact"
               className="flex items-center gap-2 px-8 py-4 text-base font-semibold text-neutral-300 border border-white/10 rounded-full hover:bg-white/5 hover:border-white/20 transition-all"
             >
-              Partner With Us
+              Get Free Waste Audit
             </a>
           </motion.div>
 
@@ -117,7 +118,7 @@ export default function HeroSection({ summary }: { summary: Summary }) {
                 />
               </div>
               <div className="text-sm text-neutral-500 font-medium">
-                Total Waste Processed (kg)
+                kg Waste Diverted from Landfills
               </div>
             </div>
             <div className="glass rounded-2xl p-6 text-center">
@@ -129,7 +130,7 @@ export default function HeroSection({ summary }: { summary: Summary }) {
                 />
               </div>
               <div className="text-sm text-neutral-500 font-medium">
-                Biogas Produced
+                Biogas for Hostel Kitchens
               </div>
             </div>
             <div className="glass rounded-2xl p-6 text-center">
@@ -141,7 +142,7 @@ export default function HeroSection({ summary }: { summary: Summary }) {
                 />
               </div>
               <div className="text-sm text-neutral-500 font-medium">
-                Carbon Credits (tons CO₂)
+                tCO₂ in Tradeable Credits
               </div>
             </div>
           </motion.div>

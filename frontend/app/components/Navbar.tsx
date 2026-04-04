@@ -39,7 +39,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <a
-              href="#home"
+              href="/"
               className="flex items-center gap-2 group"
             >
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-green-500/25 transition-shadow">

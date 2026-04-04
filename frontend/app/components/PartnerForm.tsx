@@ -44,12 +44,12 @@ export default function PartnerForm() {
             Get Started
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Partner{" "}
-            <span className="gradient-text">With Us</span>
+            Stop Paying to{" "}
+            <span className="gradient-text">Throw Away Food</span>
           </h2>
           <p className="mt-4 text-neutral-500 max-w-xl mx-auto">
-            Whether you&apos;re a hostel, institution, or investor — let&apos;s
-            build sustainable infrastructure together.
+            We collect your mess waste at zero cost. You get biogas,
+            fertilizer, and real-time impact tracking — all for free.
           </p>
         </motion.div>
 
@@ -70,12 +70,12 @@ export default function PartnerForm() {
               </h3>
               <ul className="space-y-3 text-sm text-neutral-400">
                 {[
-                  "Zero waste disposal costs for your hostel",
-                  "Free biogas for kitchen operations",
-                  "Organic fertilizer for campus gardens",
-                  "Carbon revenue shared with your institution",
+                  "Reduce waste disposal costs by 60–80%",
+                  "Generate ~7 m³ biogas/day (replaces 3–4 LPG cylinders)",
+                  "Organic fertilizer for campus grounds",
+                  "Earn ₹4,000–8,000/month from carbon credit revenue",
                   "Real-time impact dashboard access",
-                  "ESG compliance reporting automation",
+                  "Automated ESG reports for NAAC/NIRF compliance",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <CheckCircle
@@ -92,11 +92,11 @@ export default function PartnerForm() {
               <h4 className="font-semibold mb-2">Who should partner?</h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "College Hostels",
-                  "Paying Guest Accommodations",
-                  "Corporate Cafeterias",
-                  "Hotels",
-                  "Institutional Canteens",
+                  "College Hostels (50–200 kg/day)",
+                  "PG Accommodations (20–80 kg/day)",
+                  "Corporate Cafeterias (100–500 kg/day)",
+                  "Hotels & Banquet Halls (200–1000 kg/day)",
+                  "Institutional Canteens (30–150 kg/day)",
                 ].map((tag) => (
                   <span
                     key={tag}
