@@ -27,7 +27,15 @@
       "Bash(git commit -m \"Resolve merge conflict for README.md:*)",
       "Bash(git status:*)",
       "Bash(python -c:*)",
-      "Bash(git ls-tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(netstat -ano)",
+      "Bash(findstr ':3000 :8080 :5173 :8000')",
+      "Bash(taskkill:*)",
+      "Bash(findstr :3000)",
+      "Bash(cmd //c taskkill //F //PID 31624)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.unep.org)",
+      "WebFetch(domain:www.epa.gov)",
+      "WebFetch(domain:timesofindia.indiatimes.com)",
+      "WebFetch(domain:food.ec.europa.eu)",
+      "WebFetch(domain:www.statista.com)",
+      "WebFetch(domain:www.wri.org)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.carboncredit.com)",
+      "WebFetch(domain:www.bbc.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
