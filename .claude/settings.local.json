@@ -57,7 +57,8 @@
       "Bash(pip install:*)",
       "Bash(python create_pitch_ppt.py)",
       "Bash(echo \"FAILED: $?\")",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(find /c/Users/yash/Desktop/Waste2Watts/frontend -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.jsx -o -name *.js \\\\\\))"
     ]
   }
 }
