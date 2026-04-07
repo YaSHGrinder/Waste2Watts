@@ -1,92 +1,100 @@
-# Waste2Watts — Turn Food Waste Into Clean Energy
+# Waste2Watts
+
+> Turning food waste into clean energy.
+
+Waste2Watts is a waste-to-energy platform that quantifies the biogas, fertilizer, and CO₂ offset output from food waste collected at hostels, canteens, and campuses. We are building for a circular economy — turning a disposal cost into a revenue stream.
+
+**Live site:** [waste2watts.vercel.app](https://waste2watts.vercel.app)
+
+---
+
+## The Problem
+
+India generates ~65,000 tonnes of food waste every day. Most of it ends up in landfills, producing methane — a greenhouse gas 25x more potent than CO₂. Hostels, messes, and eateries pay to dispose of this waste when it could be a resource.
+
+## Our Solution
+
+1. **Collect** organic waste from waste generators (hostels, canteens, campuses)
+2. **Process** through anaerobic biogas digesters
+3. **Convert** waste into biogas (cooking fuel), liquid fertilizer, and carbon credits
+4. **Track** everything through a real-time dashboard with measurable KPIs
+
+### Pilot Plan
+
+- **Scale:** 2 tonnes per day (TPD) processing unit
+- **Target:** Hostel and canteen clusters
+- **Output per kg waste:** 0.05 m³ biogas · 0.25 kg fertilizer · 0.001 tonne CO₂ offset
+
+## Vision
+
+Make distributed, small-scale waste-to-energy economically viable — starting from hostel clusters and scaling to neighborhood micro-plants across India.
+
+## Current Status
+
+**Pilot Phase** — MVP deployed. Landing page, impact calculator, and monitoring dashboard are live. Backend API with data pipeline is in development.
 
 ## Tech Stack
 
-- **Frontend:** Next.js 16 (App Router) + Tailwind CSS v4 + Framer Motion + Recharts
-- **Backend:** Express.js + Mongoose (MongoDB)
-- **Charts:** Recharts (Area, Line, Pie, Bar)
-- **Icons:** Lucide React
+| Layer | Tech |
+|---|---|
+| Frontend | Next.js (App Router) · TypeScript · Tailwind CSS · Framer Motion · Recharts |
+| Backend | Node.js · Express · MongoDB · Mongoose |
+| Hosting | Vercel (frontend) · Self-hosted (backend) |
+| Analytics | Vercel Analytics |
 
 ## Project Structure
 
 ```
 Waste2Watts/
-├── frontend/                    # Next.js frontend
+├── frontend/              # Next.js frontend (Vercel)
 │   ├── app/
-│   │   ├── components/          # Reusable UI components
-│   │   │   ├── Navbar.tsx
-│   │   │   ├── Footer.tsx
-│   │   │   ├── HeroSection.tsx
-│   │   │   ├── DashboardPreview.tsx
-│   │   │   ├── HowItWorks.tsx
-│   │   │   ├── ImpactCalculator.tsx
-│   │   │   ├── CarbonCredits.tsx
-│   │   │   ├── AboutSection.tsx
-│   │   │   ├── PartnerForm.tsx
-│   │   │   └── AnimatedCounter.tsx
-│   │   ├── dashboard/
-│   │   │   └── page.tsx         # Full interactive dashboard
-│   │   ├── page.tsx             # Landing page (all sections)
-│   │   ├── layout.tsx           # Root layout
-│   │   └── globals.css          # Global styles + design tokens
-│   └── lib/
-│       ├── api.ts               # API client with dummy data fallback
-│       └── conversions.ts       # Waste-to-output formulas
+│   │   ├── components/    # Landing page & UI sections
+│   │   ├── dashboard/     # Monitoring dashboard
+│   │   └── about/         # About & team page
+│   ├── lib/               # API client, conversion utilities
+│   └── public/            # Static assets
 │
-├── backend/                     # Express.js API
-│   ├── src/
-│   │   ├── server.js            # Entry point
-│   │   ├── models/
-│   │   │   └── WasteEntry.js    # Mongoose model
-│   │   ├── routes/
-│   │   │   └── waste.js         # Waste API routes
-│   │   ├── controllers/
-│   │   │   └── wasteController.js
-│   │   └── utils/
-│   │       ├── conversions.js   # Server-side formulas
-│   │       └── seedData.js      # 90-day dummy data
-│   └── .env
-└── README.md
+└── backend/               # Express.js API
+    └── src/
+        ├── models/        # MongoDB schemas
+        ├── controllers/   # Request handlers
+        ├── routes/        # API routes
+        └── utils/         # Conversion formulas, data seed
 ```
 
 ## Running Locally
 
-### 1. Frontend
+### Frontend
 
 ```bash
 cd frontend
-npm run dev
-```
-
-Open http://localhost:3000
-
-### 2. Backend (optional, has in-memory fallback)
-
-```bash
-cd backend
 npm install
 npm run dev
 ```
 
-Runs on http://localhost:5000
+Opens on [http://localhost:3000](http://localhost:3000)
 
-The frontend API client automatically falls back to in-memory dummy data if the backend is unavailable.
+### Backend
 
-## Conversion Formulas
+```bash
+cd backend
+cp .env.example .env     # copy and edit as needed
+npm install
+npm run dev
+```
 
-| Input | Output |
-|-------|--------|
-| 1 kg food waste | 0.05 m³ biogas |
-| 1 kg food waste | 0.25 kg fertilizer |
-| 1 kg food waste | 0.001 ton CO₂ offset |
+Runs on port 5000. The frontend falls back to in-memory data if the backend is not running.
 
-## Features
+## Environment Variables
 
-- **Landing Page:** Animated hero section with live stats, glassmorphism cards, smooth scroll
-- **Dashboard:** Real-time input/output with circular gauges, Recharts (Area, Pie, Bar), weekly data table
-- **Impact Calculator:** Interactive slider showing environmental impact from 1-1000 kg waste
-- **Carbon Credits:** Trend chart with area fill, market value estimates
-- **How It Works:** 4-step animated flow diagram with icons
-- **About Us:** Funding-focused with problem, opportunity, and scalability sections
-- **Partner Form:** Full partnership request form with ESG benefits
-- **Premium UI:** Dark + green theme, glass cards, gradient borders, Framer Motion animations
+Copy `backend/.env.example` to `backend/.env` and configure:
+
+| Variable | Description |
+|---|---|
+| `PORT` | Backend server port (default: 5000) |
+| `MONGODB_URI` | MongoDB connection string |
+| `NODE_ENV` | `development` or `production` |
+
+## License
+
+Private — all rights reserved. Not for distribution without permission.

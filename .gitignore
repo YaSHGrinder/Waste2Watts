@@ -1,5 +1,44 @@
+# Dependencies
 node_modules/
+package-lock.json
+
+# Environment & secrets
 .env
+.env.*
+!.env.example
+
+# Next.js
 .next/
+next-env.d.ts
+*.tsbuildinfo
+
+# Build output
 dist/
-*.log
+build/
+out/
+
+# IDE & editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Debug & logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# Testing
+coverage/
+
+# Misc
+*.local
+.cache/
+.vercel/
