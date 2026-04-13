@@ -2,7 +2,7 @@ import { fetchSummary } from "@/lib/api";
 import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import HowItWorks from "./components/HowItWorks";
-import RevenueModel from "./components/RevenueModel";
+
 import BeforeAfterCalculator from "./components/BeforeAfterCalculator";
 // REMOVED: import ImpactCalculator from "./components/ImpactCalculator";
 import AboutSection from "./components/AboutSection";
@@ -19,7 +19,7 @@ export default async function Home() {
       <HeroSection summary={summary} />
       <ProblemSection />
       <HowItWorks />
-      <RevenueModel />
+{/* REMOVED: RevenueModel - <RevenueModel /> */}
       <BeforeAfterCalculator />
 {/* REMOVED: ImpactCalculator - <ImpactCalculator /> */}
 {/* REMOVED: CarbonCredits - <CarbonCredits /> */}
