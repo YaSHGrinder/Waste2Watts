@@ -95,12 +95,6 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-neutral-500">
-                <Phone size={14} className="text-green-500 flex-shrink-0" />
-                <a href="tel:+918305059528" className="hover:text-white transition-colors">
-                  +91 83050 59528
-                </a>
-              </li>
-              <li className="flex items-center gap-2 text-sm text-neutral-500">
                 <MapPin size={14} className="text-green-500 flex-shrink-0" />
                 Solan, India
               </li>

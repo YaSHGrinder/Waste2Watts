@@ -21,7 +21,7 @@ const roadmapSteps = [
     step: "01",
     title: "Phase 1 — Pilot",
     description:
-      "A single 2 TPD anaerobic digestion plant serving 4 hostels in Solan, HP. Validate waste collection workflows, digestion efficiency (~92%), biogas and fertilizer yields, and the real-time impact tracking dashboard. Target: process 600 kg/day by Q2 2026. Budget: ₹8–12L capex per plant.",
+      "A single 1 TPD anaerobic digestion plant serving 4 hostels in Solan, HP. Validate waste collection workflows, digestion efficiency (~92%), biogas and fertilizer yields, and the real-time impact tracking dashboard. Target: process 300 kg/day by Q2 2026. Budget: ₹8–12L capex per plant.",
     icon: <Lightbulb size={24} />,
   },
   {
@@ -190,7 +190,7 @@ export default function AboutPage() {
             Meet the Team
           </h2>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          <div className="mt-12 grid grid-cols-1 gap-6 max-w-2xl mx-auto">
             <div className="glass rounded-2xl p-8">
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl font-bold text-black mb-5">
                 YP
@@ -208,22 +208,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="glass rounded-2xl p-8">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl font-bold text-black mb-5">
-                AD
-              </div>
-              <h3 className="text-lg font-bold">Aditya Dixit</h3>
-              <span className="text-sm text-green-400 font-medium">
-                Co-Founder
-              </span>
-              <p className="text-neutral-400 text-sm leading-relaxed mt-4">
-                Driving partnerships, business development, and scaling strategy.
-                Focused on getting the right institutional partnerships in place so
-                Waste2Watts can grow from a single pilot into a nationwide network
-                — building the relationships that turn this from an idea into
-                operational infrastructure.
-              </p>
-            </div>
           </div>
         </div>
       </section>

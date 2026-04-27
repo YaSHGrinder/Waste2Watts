@@ -21,7 +21,7 @@ India generates ~65,000 tonnes of food waste every day. Most of it ends up in la
 
 ### Pilot Plan
 
-- **Scale:** 2 tonnes per day (TPD) processing unit
+- **Scale:** 1 tonne per day (TPD) processing unit
 - **Target:** Hostel and canteen clusters
 - **Output per kg waste:** 0.05 m³ biogas · 0.25 kg fertilizer · 0.001 tonne CO₂ offset
 
