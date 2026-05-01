@@ -1,10 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, DollarSign, ShieldCheck } from "lucide-react";
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -30,6 +29,16 @@ function generateCreditsData() {
 const data = generateCreditsData();
 
 export default function CarbonCredits() {
+  const [chartReady, setChartReady] = useState(false);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setChartReady(true);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <section id="carbon" className="relative py-24 lg:py-32">
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-500/5 rounded-full blur-[100px]" />
@@ -110,7 +119,8 @@ export default function CarbonCredits() {
             Credits Generated Over Time
           </h3>
           <div className="h-64 sm:h-72">
-            <ResponsiveContainer width="100%" height="100%">
+            {chartReady ? (
+              <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data}>
                 <defs>
                   <linearGradient id="creditGrad" x1="0" y1="0" x2="0" y2="1">
@@ -149,7 +159,10 @@ export default function CarbonCredits() {
                   fill="url(#creditGrad)"
                 />
               </AreaChart>
-            </ResponsiveContainer>
+              </ResponsiveContainer>
+            ) : (
+              <div className="h-full rounded-xl bg-white/[0.025]" />
+            )}
           </div>
         </motion.div>
       </div>

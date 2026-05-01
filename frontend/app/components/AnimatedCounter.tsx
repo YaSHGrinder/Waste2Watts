@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
-import { useInView, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useInView, useSpring } from "framer-motion";
 
 export default function AnimatedCounter({
   target,
@@ -17,9 +17,6 @@ export default function AnimatedCounter({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const motionValue = useSpring(0, { duration: duration * 1000 });
-  const display = useTransform(motionValue, (latest) =>
-    latest.toFixed(decimals) + suffix
-  );
   const [readout, setReadout] = useState("0");
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   Lightbulb,
   Leaf,
@@ -72,7 +73,7 @@ export default function AboutPage() {
             </h1>
             <p className="mt-6 text-neutral-400 text-lg leading-relaxed">
               Waste2Watts is a climate-tech startup founded in 2026 with a bold
-              vision — to transform India's massive food waste problem into a
+              vision — to transform India&apos;s massive food waste problem into a
               powerful opportunity for clean energy, sustainable agriculture,
               and carbon reduction.
             </p>
@@ -119,7 +120,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 lg:p-10">
               <h3 className="text-xl font-bold mb-4">Our Vision</h3>
               <p className="text-neutral-400 leading-relaxed">
-                To build India's largest decentralized food waste-to-energy
+                To build India&apos;s largest decentralized food waste-to-energy
                 network, reducing landfill dependency and accelerating the
                 transition toward a circular economy.
               </p>
@@ -261,13 +262,13 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <a
+          <Link
             href="/#contact"
             className="group inline-flex items-center gap-2 px-8 py-3 text-sm font-semibold text-black bg-gradient-to-r from-green-400 to-green-500 rounded-full hover:shadow-lg hover:shadow-green-500/25 transition-all"
           >
             Partner With Us
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </a>
+          </Link>
         </div>
       </section>
     </div>

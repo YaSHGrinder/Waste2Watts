@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function AboutSection() {
@@ -24,18 +25,18 @@ export default function AboutSection() {
           </h2>
           <p className="mt-6 text-neutral-400 text-lg leading-relaxed">
             Waste2Watts is a climate-tech startup founded in 2026 with a bold
-            vision — to transform India's massive food waste problem into a
+            vision — to transform India&apos;s massive food waste problem into a
             powerful opportunity for clean energy, sustainable agriculture,
             and carbon reduction.
           </p>
 
-          <a
+          <Link
             href="/about"
             className="group inline-flex items-center gap-2 mt-8 text-sm font-medium text-green-400 hover:text-green-300 transition-colors"
           >
             Read our full story
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

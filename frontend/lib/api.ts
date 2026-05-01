@@ -106,7 +106,7 @@ export async function fetchDailyTrend(): Promise<DailyTrend[]> {
 export async function postWasteEntry(
   hostelName: string,
   wasteKg: number
-): Promise<any> {
+): Promise<WasteEntry | null> {
   try {
     const res = await fetch(`${API_BASE}/waste`, {
       method: "POST",

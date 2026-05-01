@@ -147,7 +147,7 @@ export default function ImpactCalculator() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {impacts.map((item, i) => (
+          {impacts.map((item) => (
             <motion.div
               key={item.label}
               variants={{

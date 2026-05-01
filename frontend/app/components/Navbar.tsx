@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-{ label: "How It Works", href: "#how-it-works" },
+  { label: "How It Works", href: "#how-it-works" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -36,7 +37,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <a
+            <Link
               href="/"
               className="flex items-center gap-2 group"
             >
@@ -46,7 +47,7 @@ export default function Navbar() {
               <span className="text-lg font-semibold tracking-tight">
                 Waste<span className="gradient-text">2</span>Watts
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
@@ -63,12 +64,12 @@ export default function Navbar() {
 
             {/* CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <a
+              <Link
                 href="/dashboard"
                 className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors font-medium"
               >
                 Dashboard
-              </a>
+              </Link>
               <a
                 href="#contact"
                 className="px-5 py-2.5 text-sm font-medium text-black bg-gradient-to-r from-green-400 to-green-500 rounded-full hover:from-green-300 hover:to-green-400 transition-all hover:shadow-lg hover:shadow-green-500/25"
@@ -116,12 +117,12 @@ export default function Navbar() {
               transition={{ delay: navLinks.length * 0.05 + 0.05 }}
               className="mt-6"
             >
-              <a
+              <Link
                 href="/dashboard"
                 className="block text-center w-48 px-6 py-3 text-sm font-medium text-black bg-gradient-to-r from-green-400 to-green-500 rounded-full"
               >
                 Go to Dashboard
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         )}
