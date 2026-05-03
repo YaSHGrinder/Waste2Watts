@@ -77,7 +77,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
 
@@ -98,7 +98,7 @@ const pipeline = [
 ];
 
 export default function HowItWorks() {
-  const [activeStep, setActiveStep] = useState(null);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const prefersReducedMotion = useReducedMotion();
