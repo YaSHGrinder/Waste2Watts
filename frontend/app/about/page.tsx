@@ -241,7 +241,7 @@ export default function AboutPage() {
           <div className="glass rounded-2xl p-8 lg:p-12 gradient-border text-center max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-4">The Future</h2>
             <p className="text-neutral-400 leading-relaxed text-lg">
-              What begins today as a single 2 TPD pilot plant will evolve into a{" "}
+              What begins today as a single 1 TPD pilot plant will evolve into a{" "}
               <span className="text-white font-medium">
                 nationwide ecosystem of decentralized waste-to-energy clusters
               </span>
