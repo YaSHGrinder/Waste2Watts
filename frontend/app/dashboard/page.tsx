@@ -329,8 +329,8 @@ export default function DashboardPage() {
                     <span className="text-2xl font-bold">{sensor.value}</span>
                     {sensor.unit && <span className="pb-1 text-xs text-neutral-500">{sensor.unit}</span>}
                   </div>
-                  <div className="mt-3 flex items-center justify-between gap-2">
-                    <span className="text-[11px] text-neutral-500">{sensor.source}</span>
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+                    <span className="min-w-0 break-all text-[11px] text-neutral-500">{sensor.source}</span>
                     <span className="rounded-full bg-green-500/10 px-2 py-0.5 text-[11px] font-medium text-green-400">
                       {sensor.status}
                     </span>

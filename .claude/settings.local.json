@@ -62,7 +62,8 @@
       "Bash(git rm:*)",
       "Bash(git fetch:*)",
       "Bash(find C:UsersyashDesktopWaste2Wattsfrontendapp -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.jsx -o -name *.js \\\\\\))",
-      "Bash(find C:UsersyashDesktopWaste2Wattsfrontendapp -name *.tsx -type f)"
+      "Bash(find C:UsersyashDesktopWaste2Wattsfrontendapp -name *.tsx -type f)",
+      "Bash(find C:UsersyashDesktopWaste2Watts -type f -iname *dashboard*)"
     ]
   }
 }
