@@ -59,9 +59,9 @@ const dailyTrend = [
 ];
 
 const outputBreakdown = [
-  { name: "Biogas", value: 42.5, color: "#38bdf8" },
-  { name: "Fertilizer", value: 205, color: "#22c55e" },
-  { name: "CO2e Offset", value: 82, color: "#f59e0b" },
+  { name: "Biogas", value: 42.5, color: "#00E676" },
+  { name: "Fertilizer", value: 205, color: "#34D399" },
+  { name: "CO2e Offset", value: 82, color: "#FBBF24" },
 ];
 
 const readinessItems = [
@@ -72,10 +72,10 @@ const readinessItems = [
 ];
 
 const alerts = [
-  { title: "System online", detail: "All pilot monitoring points reporting", tone: "text-green-400" },
-  { title: "pH within safe range", detail: "Current reading stable for digestion", tone: "text-green-400" },
-  { title: "Gas flow normal", detail: "Production trend matches feed input", tone: "text-sky-400" },
-  { title: "Daily data recorded", detail: "Impact log ready for validation", tone: "text-amber-400" },
+  { title: "System online", detail: "All pilot monitoring points reporting", tone: "text-success" },
+  { title: "pH within safe range", detail: "Current reading stable for digestion", tone: "text-success" },
+  { title: "Gas flow normal", detail: "Production trend matches feed input", tone: "text-primary" },
+  { title: "Daily data recorded", detail: "Impact log ready for validation", tone: "text-warning" },
 ];
 
 function buildTelemetry(tick: number): TelemetryMetric[] {
@@ -91,17 +91,17 @@ function buildTelemetry(tick: number): TelemetryMetric[] {
       status: "Online",
       source: "hopper_load_cell",
       icon: <Scale size={18} />,
-      accent: "text-green-400 bg-green-500/10",
+      accent: "text-primary bg-primary/10",
     },
     {
       metric: "biogas_flow",
       label: "Gas Flow",
       value: `${(42.5 + wave * 1.4).toFixed(1)}`,
-      unit: "m3 today",
+      unit: "m³ today",
       status: "Normal",
       source: "gas_flow_meter",
       icon: <Gauge size={18} />,
-      accent: "text-sky-400 bg-sky-500/10",
+      accent: "text-accent bg-accent/10",
     },
     {
       metric: "methane_quality",
@@ -111,17 +111,17 @@ function buildTelemetry(tick: number): TelemetryMetric[] {
       status: "Stable",
       source: "methane_sensor",
       icon: <Flame size={18} />,
-      accent: "text-orange-400 bg-orange-500/10",
+      accent: "text-warning bg-warning/10",
     },
     {
       metric: "digester_temperature",
       label: "Temperature",
       value: `${(35.6 + wave * 0.3).toFixed(1)}`,
-      unit: "C",
+      unit: "°C",
       status: "Stable",
       source: "temperature_probe",
       icon: <Thermometer size={18} />,
-      accent: "text-amber-400 bg-amber-500/10",
+      accent: "text-warning bg-warning/10",
     },
     {
       metric: "slurry_ph",
@@ -131,7 +131,7 @@ function buildTelemetry(tick: number): TelemetryMetric[] {
       status: "Normal",
       source: "ph_sensor",
       icon: <Droplets size={18} />,
-      accent: "text-blue-400 bg-blue-500/10",
+      accent: "text-primary bg-primary/10",
     },
   ];
 }
@@ -141,14 +141,8 @@ export default function DashboardPage() {
   const [chartsReady, setChartsReady] = useState(false);
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      setChartsReady(true);
-    });
-
-    const timer = window.setInterval(() => {
-      setTick((value) => value + 1);
-    }, 3500);
-
+    const frame = window.requestAnimationFrame(() => setChartsReady(true));
+    const timer = window.setInterval(() => setTick((v) => v + 1), 3500);
     return () => {
       window.cancelAnimationFrame(frame);
       window.clearInterval(timer);
@@ -169,23 +163,23 @@ export default function DashboardPage() {
       value: wasteToday.toLocaleString(),
       unit: "kg",
       icon: <Scale size={19} />,
-      tone: "text-green-400 bg-green-500/10",
+      tone: "text-success bg-success/10",
       caption: `${Math.round((wasteToday / 1000) * 100)}% of 1 TPD pilot capacity`,
     },
     {
       label: "Biogas Generated",
       value: biogasToday.toFixed(1),
-      unit: "m3",
+      unit: "m³",
       icon: <Flame size={19} />,
-      tone: "text-sky-400 bg-sky-500/10",
+      tone: "text-primary bg-primary/10",
       caption: "Simulated gas flow meter reading",
     },
     {
-      label: "CO2 Avoided",
+      label: "CO₂ Avoided",
       value: co2Avoided.toFixed(2),
-      unit: "tCO2e",
+      unit: "tCO₂e",
       icon: <Leaf size={19} />,
-      tone: "text-green-400 bg-green-500/10",
+      tone: "text-success bg-success/10",
       caption: "Estimated from verified waste input",
     },
     {
@@ -193,7 +187,7 @@ export default function DashboardPage() {
       value: `~${energy}`,
       unit: "kWh",
       icon: <BatteryCharging size={19} />,
-      tone: "text-amber-400 bg-amber-500/10",
+      tone: "text-warning bg-warning/10",
       caption: "Based on methane-rich biogas output",
     },
     {
@@ -201,7 +195,7 @@ export default function DashboardPage() {
       value: fertilizer.toString(),
       unit: "kg",
       icon: <Waves size={19} />,
-      tone: "text-emerald-400 bg-emerald-500/10",
+      tone: "text-accent bg-accent/10",
       caption: "Digestate estimate for daily report",
     },
     {
@@ -209,14 +203,15 @@ export default function DashboardPage() {
       value: "Verified",
       unit: "",
       icon: <BadgeCheck size={19} />,
-      tone: "text-violet-400 bg-violet-500/10",
+      tone: "text-primary bg-primary/10",
       caption: "Daily impact record is export-ready",
     },
   ];
 
   return (
     <div className="min-h-screen pt-20 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -224,55 +219,56 @@ export default function DashboardPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-white transition-colors mb-4"
+            className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-colors mb-4"
           >
             <ArrowLeft size={14} />
             Back to Home
           </Link>
 
-          <div className="glass rounded-2xl p-5 sm:p-6">
+          <div className="surface-elevated rounded-xl p-5 sm:p-6">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400">
-                    <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="inline-flex items-center gap-2 rounded-full border border-warning/20 bg-warning/10 px-3 py-1 text-xs font-medium text-warning">
+                    <span className="h-2 w-2 rounded-full bg-warning animate-pulse" />
                     Pilot Simulation
                   </span>
-                  <span className="rounded-full border border-white/[0.08] px-3 py-1 text-xs font-medium text-neutral-400">
+                  <span className="rounded-full border border-border px-3 py-1 text-xs font-medium text-text-dim">
                     1 TPD Capacity
                   </span>
-                  <span className="rounded-full border border-white/[0.08] px-3 py-1 text-xs font-medium text-neutral-400">
+                  <span className="rounded-full border border-border px-3 py-1 text-xs font-medium text-text-dim">
                     Pilot Plant
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-text font-display">
                   Waste2Watts <span className="gradient-text">Pilot Dashboard</span>
                 </h1>
-                <p className="mt-2 max-w-2xl text-sm sm:text-base text-neutral-400">
+                <p className="mt-2 max-w-2xl text-sm sm:text-base text-text-dim">
                   A real-time preview of how food waste, biogas output, and carbon-credit ready impact data will be tracked.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center">
-                <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-4 py-3">
-                  <div className="flex items-center gap-2 text-xs text-neutral-500">
+                <div className="rounded-xl border border-border surface-card px-4 py-3">
+                  <div className="flex items-center gap-2 text-xs text-text-muted">
                     <Clock3 size={14} />
                     Last Updated
                   </div>
-                  <div className="mt-1 text-sm font-semibold text-white">Just now</div>
+                  <div className="mt-1 text-sm font-semibold text-text">Just now</div>
                 </div>
-                <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-4 py-3">
-                  <div className="flex items-center gap-2 text-xs text-neutral-500">
+                <div className="rounded-xl border border-border surface-card px-4 py-3">
+                  <div className="flex items-center gap-2 text-xs text-text-muted">
                     <Radio size={14} />
                     Data Mode
                   </div>
-                  <div className="mt-1 text-sm font-semibold text-white">Live simulated</div>
+                  <div className="mt-1 text-sm font-semibold text-text">Live simulated</div>
                 </div>
               </div>
             </div>
           </div>
         </motion.div>
 
+        {/* KPI Cards */}
         <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-6">
           {kpis.map((card, index) => (
             <motion.div
@@ -280,39 +276,40 @@ export default function DashboardPage() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.04 }}
-              className="glass rounded-2xl p-5 hover:bg-white/[0.045] transition-colors"
+              className="surface-elevated rounded-xl p-5 hover:bg-surface-elevated transition-colors"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${card.tone}`}>
                   {card.icon}
                 </div>
-                <span className="rounded-full border border-white/[0.06] px-2.5 py-1 text-[11px] font-medium text-neutral-500">
+                <span className="rounded-full border border-border px-2.5 py-1 text-[11px] font-medium text-text-muted">
                   Today
                 </span>
               </div>
               <div className="mt-5 flex items-end gap-2">
-                <div className="text-3xl font-bold tracking-tight">{card.value}</div>
-                {card.unit && <div className="pb-1 text-sm font-medium text-neutral-400">{card.unit}</div>}
+                <div className="text-3xl font-bold tracking-tight text-text">{card.value}</div>
+                {card.unit && <div className="pb-1 text-sm font-medium text-text-dim">{card.unit}</div>}
               </div>
-              <div className="mt-2 text-xs text-neutral-500">{card.label}</div>
-              <div className="mt-4 text-xs text-neutral-400">{card.caption}</div>
+              <div className="mt-2 text-xs text-text-muted">{card.label}</div>
+              <div className="mt-4 text-xs text-text-dim">{card.caption}</div>
             </motion.div>
           ))}
         </section>
 
+        {/* Telemetry + Readiness */}
         <section className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] gap-6 mb-6">
-          <div className="glass rounded-2xl p-5 sm:p-6">
+          <div className="surface-elevated rounded-xl p-5 sm:p-6">
             <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <div className="flex items-center gap-2 text-sm font-semibold">
-                  <Activity size={18} className="text-green-400" />
+                <div className="flex items-center gap-2 text-sm font-semibold text-text">
+                  <Activity size={18} className="text-success" />
                   Basic Sensor Feed
                 </div>
-                <p className="mt-1 text-xs text-neutral-500">
+                <p className="mt-1 text-xs text-text-muted">
                   Core monitoring points for the first smart biogas pilot.
                 </p>
               </div>
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs text-green-400">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-success/20 bg-success/10 px-3 py-1 text-xs text-success">
                 <CheckCircle2 size={13} />
                 All online
               </span>
@@ -320,18 +317,18 @@ export default function DashboardPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
               {telemetry.map((sensor) => (
-                <div key={sensor.metric} className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-4">
+                <div key={sensor.metric} className="rounded-xl border border-border surface-card p-4">
                   <div className={`mb-4 flex h-9 w-9 items-center justify-center rounded-lg ${sensor.accent}`}>
                     {sensor.icon}
                   </div>
-                  <div className="text-sm font-semibold text-white">{sensor.label}</div>
+                  <div className="text-sm font-semibold text-text">{sensor.label}</div>
                   <div className="mt-2 flex items-end gap-1.5">
-                    <span className="text-2xl font-bold">{sensor.value}</span>
-                    {sensor.unit && <span className="pb-1 text-xs text-neutral-500">{sensor.unit}</span>}
+                    <span className="text-2xl font-bold text-text">{sensor.value}</span>
+                    {sensor.unit && <span className="pb-1 text-xs text-text-muted">{sensor.unit}</span>}
                   </div>
                   <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-                    <span className="min-w-0 break-all text-[11px] text-neutral-500">{sensor.source}</span>
-                    <span className="rounded-full bg-green-500/10 px-2 py-0.5 text-[11px] font-medium text-green-400">
+                    <span className="min-w-0 break-all text-[11px] text-text-muted">{sensor.source}</span>
+                    <span className="rounded-full bg-success/10 px-2 py-0.5 text-[11px] font-medium text-success">
                       {sensor.status}
                     </span>
                   </div>
@@ -340,12 +337,12 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-5 sm:p-6">
-            <div className="flex items-center gap-2 text-sm font-semibold">
-              <ShieldCheck size={18} className="text-violet-400" />
+          <div className="surface-elevated rounded-xl p-5 sm:p-6">
+            <div className="flex items-center gap-2 text-sm font-semibold text-text">
+              <ShieldCheck size={18} className="text-primary" />
               Carbon Credit Readiness
             </div>
-            <p className="mt-1 text-xs text-neutral-500">
+            <p className="mt-1 text-xs text-text-muted">
               Key records needed for future validation and reporting.
             </p>
 
@@ -353,17 +350,17 @@ export default function DashboardPage() {
               {readinessItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="flex items-center justify-between gap-3 rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
+                  <div key={item.label} className="flex items-center justify-between gap-3 rounded-xl border border-border surface-card p-3">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-500/10 text-green-400">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-success/10 text-success">
                         <Icon size={16} />
                       </div>
                       <div>
-                        <div className="text-sm font-medium">{item.label}</div>
-                        <div className="text-xs text-neutral-500">{item.value}</div>
+                        <div className="text-sm font-medium text-text">{item.label}</div>
+                        <div className="text-xs text-text-muted">{item.value}</div>
                       </div>
                     </div>
-                    <CheckCircle2 size={16} className="text-green-400" />
+                    <CheckCircle2 size={16} className="text-success" />
                   </div>
                 );
               })}
@@ -371,42 +368,44 @@ export default function DashboardPage() {
           </div>
         </section>
 
+        {/* Charts */}
         <section className="grid grid-cols-1 xl:grid-cols-[1fr_1fr_0.72fr] gap-6 mb-6">
-          <div className="glass rounded-2xl p-5 sm:p-6">
+          <div className="surface-elevated rounded-xl p-5 sm:p-6">
             <div className="mb-5 flex items-center gap-2">
-              <BarChart3 size={18} className="text-green-400" />
-              <h2 className="text-sm font-semibold">Daily Waste Processed</h2>
+              <BarChart3 size={18} className="text-success" />
+              <h2 className="text-sm font-semibold text-text">Daily Waste Processed</h2>
             </div>
             <div className="h-64">
               {chartsReady ? (
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={dailyTrend}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-                    <XAxis dataKey="day" stroke="rgba(255,255,255,0.15)" tick={{ fill: "#737373", fontSize: 12 }} />
-                    <YAxis stroke="rgba(255,255,255,0.15)" tick={{ fill: "#737373", fontSize: 11 }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--color-chart-grid)" />
+                    <XAxis dataKey="day" stroke="var(--color-chart-axis)" tick={{ fill: "var(--color-text-muted)", fontSize: 12 }} />
+                    <YAxis stroke="var(--color-chart-axis)" tick={{ fill: "var(--color-text-muted)", fontSize: 11 }} />
                     <Tooltip
                       cursor={{ fill: "rgba(255,255,255,0.03)" }}
                       contentStyle={{
-                        background: "#111111",
-                        border: "1px solid rgba(255,255,255,0.08)",
+                        background: "var(--color-chart-tooltip-bg)",
+                        border: "1px solid var(--color-chart-tooltip-border)",
                         borderRadius: "12px",
-                        color: "#fff",
+                        color: "var(--color-text)",
                         fontSize: "13px",
+                        padding: "10px 14px",
                       }}
                     />
-                    <Bar dataKey="waste" name="Waste kg" fill="#22c55e" radius={[8, 8, 0, 0]} />
+                    <Bar dataKey="waste" name="Waste kg" fill="#00E676" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-full rounded-xl bg-white/[0.025]" />
+                <div className="h-xl rounded-lg bg-surface animate-pulse" />
               )}
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-5 sm:p-6">
+          <div className="surface-elevated rounded-xl p-5 sm:p-6">
             <div className="mb-5 flex items-center gap-2">
-              <Flame size={18} className="text-sky-400" />
-              <h2 className="text-sm font-semibold">Biogas Generation Trend</h2>
+              <Flame size={18} className="text-primary" />
+              <h2 className="text-sm font-semibold text-text">Biogas Generation Trend</h2>
             </div>
             <div className="h-64">
               {chartsReady ? (
@@ -414,35 +413,36 @@ export default function DashboardPage() {
                   <AreaChart data={dailyTrend}>
                     <defs>
                       <linearGradient id="biogasGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.35} />
-                        <stop offset="100%" stopColor="#38bdf8" stopOpacity={0} />
+                        <stop offset="0%" stopColor="#00E676" stopOpacity={0.25} />
+                        <stop offset="100%" stopColor="#00E676" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-                    <XAxis dataKey="day" stroke="rgba(255,255,255,0.15)" tick={{ fill: "#737373", fontSize: 12 }} />
-                    <YAxis stroke="rgba(255,255,255,0.15)" tick={{ fill: "#737373", fontSize: 11 }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--color-chart-grid)" />
+                    <XAxis dataKey="day" stroke="var(--color-chart-axis)" tick={{ fill: "var(--color-text-muted)", fontSize: 12 }} />
+                    <YAxis stroke="var(--color-chart-axis)" tick={{ fill: "var(--color-text-muted)", fontSize: 11 }} />
                     <Tooltip
                       contentStyle={{
-                        background: "#111111",
-                        border: "1px solid rgba(255,255,255,0.08)",
+                        background: "var(--color-chart-tooltip-bg)",
+                        border: "1px solid var(--color-chart-tooltip-border)",
                         borderRadius: "12px",
-                        color: "#fff",
+                        color: "var(--color-text)",
                         fontSize: "13px",
+                        padding: "10px 14px",
                       }}
                     />
-                    <Area type="monotone" dataKey="biogas" name="Biogas m3" stroke="#38bdf8" strokeWidth={2.5} fill="url(#biogasGrad)" />
+                    <Area type="monotone" dataKey="biogas" name="Biogas m³" stroke="#00E676" strokeWidth={2.5} fill="url(#biogasGrad)" />
                   </AreaChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-full rounded-xl bg-white/[0.025]" />
+                <div className="h-full rounded-lg bg-surface animate-pulse" />
               )}
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-5 sm:p-6">
+          <div className="surface-elevated rounded-xl p-5 sm:p-6">
             <div className="mb-5 flex items-center gap-2">
-              <Droplets size={18} className="text-amber-400" />
-              <h2 className="text-sm font-semibold">Output Breakdown</h2>
+              <Droplets size={18} className="text-warning" />
+              <h2 className="text-sm font-semibold text-text">Output Breakdown</h2>
             </div>
             <div className="h-52">
               {chartsReady ? (
@@ -457,63 +457,65 @@ export default function DashboardPage() {
                       paddingAngle={4}
                       stroke="none"
                     >
-                      {outputBreakdown.map((entry) => (
-                        <Cell key={entry.name} fill={entry.color} />
+                      {outputBreakdown.map((entry, i) => (
+                        <Cell key={i} fill={entry.color} />
                       ))}
                     </Pie>
                     <Tooltip
                       contentStyle={{
-                        background: "#111111",
-                        border: "1px solid rgba(255,255,255,0.08)",
+                        background: "var(--color-chart-tooltip-bg)",
+                        border: "1px solid var(--color-chart-tooltip-border)",
                         borderRadius: "12px",
-                        color: "#fff",
+                        color: "var(--color-text)",
                         fontSize: "13px",
+                        padding: "10px 14px",
                       }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-full rounded-xl bg-white/[0.025]" />
+                <div className="h-full rounded-lg bg-surface animate-pulse" />
               )}
             </div>
             <div className="mt-2 space-y-2">
               {outputBreakdown.map((item) => (
                 <div key={item.name} className="flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-2 text-neutral-400">
-                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
+                  <span className="flex items-center gap-2 text-text-dim">
+                    <span className="h-2.5 w-2.5 rounded-full" style={{ background: item.color }} />
                     {item.name}
                   </span>
-                  <span className="font-semibold text-white">{item.value}</span>
+                  <span className="font-semibold text-text">{item.value}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="glass rounded-2xl p-5 sm:p-6">
+        {/* Monitoring Log */}
+        <section className="surface-elevated rounded-xl p-5 sm:p-6">
           <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div className="flex items-center gap-2 text-sm font-semibold">
-                <ShieldCheck size={18} className="text-green-400" />
+              <div className="flex items-center gap-2 text-sm font-semibold text-text">
+                <ShieldCheck size={18} className="text-success" />
                 Monitoring Log
               </div>
-              <p className="mt-1 text-xs text-neutral-500">
+              <p className="mt-1 text-xs text-text-muted">
                 Light operational alerts for website preview and pilot validation.
               </p>
             </div>
-            <span className="w-fit rounded-full border border-white/[0.06] px-3 py-1 text-xs text-neutral-400">
+            <span className="w-fit rounded-full border border-border px-3 py-1 text-xs text-text-dim">
               4 active confirmations
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
             {alerts.map((alert) => (
-              <div key={alert.title} className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-4">
+              <div key={alert.title} className="rounded-xl border border-border surface-card p-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 size={16} className={alert.tone} />
-                  <div className="text-sm font-semibold">{alert.title}</div>
+                  <div className="text-sm font-semibold text-text">{alert.title}</div>
                 </div>
-                <p className="mt-2 text-xs leading-5 text-neutral-500">{alert.detail}</p>
+                <p className="mt-2 text-xs leading-5 text-text-muted">{alert.detail}</p>
               </div>
             ))}
           </div>

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Building2, Send, CheckCircle } from "lucide-react";
 import Section from "./Section";
-import Button from "./ui/Button";
 
 export default function PartnerForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -18,9 +17,7 @@ export default function PartnerForm() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -31,9 +28,9 @@ export default function PartnerForm() {
   };
 
   return (
-    <Section id="contact" className="section-standard" bgMesh>
+    <Section id="contact-form" className="section-standard mesh-green">
       <div className="max-w-5xl mx-auto">
-        {/* Header - asymmetric */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,66 +38,69 @@ export default function PartnerForm() {
           className="mb-12 max-w-2xl"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-[2px] h-8 bg-green-400" />
-            <span className="text-[11px] tracking-[0.25em] uppercase text-green-400 font-[family-name:var(--font-syne)] font-medium">
-              Get Started
+            <div className="w-[18px] h-[2px] bg-primary" />
+            <span className="text-[11px] tracking-[0.2em] uppercase text-primary font-semibold font-display">
+              Partner With Us
             </span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.02em] leading-[0.95] text-text-heading">
-            Stop Paying to{" "}
-            <span className="gradient-text">Throw Away Food</span>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.03em] leading-[0.95] text-text">
+            Ready to Turn Waste
+            <br />
+            <span className="gradient-text">Into Revenue?</span>
           </h2>
-          <p className="mt-6 text-text-body leading-relaxed">
-            We collect your mess waste at zero cost. You get biogas,
-            fertilizer, and real-time impact tracking — all for free.
+          <p className="mt-5 text-text-dim leading-relaxed">
+            We collect your mess waste at zero cost. Fill out the form below
+            and our team will reach out within 48 hours.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left: Info - no glass, flat surface */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* Left: Benefits */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="lg:col-span-2 space-y-4"
           >
-            <div className="bg-bg-surface border border-white/[0.06] rounded-sm p-6">
-              <div className="w-10 h-10 rounded-sm bg-green-400/10 flex items-center justify-center text-green-400 mb-4">
-                <Building2 size={20} />
+            <div className="surface-card rounded-2xl p-6">
+              <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center text-primary mb-4">
+                <Building2 size={18} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-text-heading mb-4">
+              <h3 className="font-display text-base font-semibold text-text mb-4">
                 Benefits of Partnering
               </h3>
-              <ul className="space-y-3 text-sm text-text-body">
+              <ul className="space-y-2.5 text-sm text-text-dim">
                 {[
                   "Reduce waste disposal costs by 60–80%",
-                  "Generate ~7 m³ biogas/day (replaces 3–4 LPG cylinders)",
+                  "Generate ~7 m³ biogas/day (3–4 LPG cylinders)",
                   "Organic fertilizer for campus grounds",
-                  "Earn ₹4,000–8,000/month from carbon credit revenue",
+                  "₹4,000–8,000/month from carbon credit revenue",
                   "Real-time impact dashboard access",
                   "Automated ESG reports for NAAC/NIRF compliance",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle size={14} className="text-success mt-0.5 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-bg-surface border border-white/[0.06] rounded-sm p-6">
-              <h4 className="font-display text-sm font-semibold text-text-heading mb-3">Who should partner?</h4>
+            <div className="surface-card rounded-2xl p-6">
+              <h4 className="font-display text-xs font-semibold text-text uppercase tracking-[0.12em] mb-3">
+                Who Should Partner?
+              </h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "College Hostels (50–200 kg/day)",
-                  "PG Accommodations (20–80 kg/day)",
-                  "Corporate Cafeterias (100–500 kg/day)",
-                  "Hotels & Banquet Halls (200–1000 kg/day)",
-                  "Institutional Canteens (30–150 kg/day)",
+                  "College Hostels",
+                  "PG Accommodations",
+                  "Corporate Cafeterias",
+                  "Hotels & Banquets",
+                  "Institutional Canteens",
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1.5 text-[11px] font-medium rounded-sm border border-white/[0.08] text-text-body"
+                    className="px-3 py-1.5 text-[11px] font-medium rounded-lg bg-white/[0.03] border border-border text-text-dim"
                   >
                     {tag}
                   </span>
@@ -109,21 +109,23 @@ export default function PartnerForm() {
             </div>
           </motion.div>
 
-          {/* Right: Form - flat, no glass */}
+          {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            className="lg:col-span-3"
+            id="partner-form"
           >
             {submitted ? (
-              <div className="bg-bg-surface border border-white/[0.06] rounded-sm p-10 text-center">
-                <div className="w-16 h-16 rounded-sm bg-green-400/10 flex items-center justify-center text-green-400 mx-auto mb-4">
+              <div className="surface-card rounded-2xl p-10 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-success/10 flex items-center justify-center text-success mx-auto mb-4">
                   <CheckCircle size={28} />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-text-heading mb-2">
+                <h3 className="font-display text-xl font-semibold text-text mb-2">
                   Application Received!
                 </h3>
-                <p className="text-text-body text-sm">
+                <p className="text-text-dim text-sm">
                   Our team will reach out within 48 hours to discuss your
                   waste management needs.
                 </p>
@@ -131,95 +133,108 @@ export default function PartnerForm() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-bg-surface border border-white/[0.06] rounded-sm p-6 space-y-4"
+                className="surface-card rounded-2xl p-6 sm:p-8 space-y-5"
               >
-                <div>
-                  <label className="block text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2">Your Name</label>
-                  <input
-                    name="name"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Rahul Sharma"
-                    className="w-full px-4 py-3 rounded-sm bg-bg-deep border border-white/[0.08] text-sm text-white placeholder:text-text-subtle focus:outline-none focus:border-green-400/40 transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2">Email</label>
-                  <input
-                    name="email"
-                    required
-                    type="email"
-                    placeholder="you@institution.edu.in"
-                    onChange={handleChange}
-                    value={form.email}
-                    className="w-full px-4 py-3 rounded-sm bg-bg-deep border border-white/[0.08] text-sm text-white placeholder:text-text-subtle focus:outline-none focus:border-green-400/40 transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2">Organization Name</label>
-                  <input
-                    name="orgName"
-                    required
-                    type="text"
-                    placeholder="Greenwood Hostel"
-                    onChange={handleChange}
-                    value={form.orgName}
-                    className="w-full px-4 py-3 rounded-sm bg-bg-deep border border-white/[0.08] text-sm text-white placeholder:text-text-subtle focus:outline-none focus:border-green-400/40 transition-all"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2">Type</label>
-                    <select
-                      name="orgType"
-                      value={form.orgType}
+                    <label className="block text-[11px] uppercase tracking-[0.12em] text-text-muted mb-2 font-medium">
+                      Your Name
+                    </label>
+                    <input
+                      name="name"
+                      required
+                      value={form.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-sm bg-bg-deep border border-white/[0.08] text-sm text-white focus:outline-none focus:border-green-400/40 transition-all appearance-none"
-                    >
-                      <option value="hostel" className="bg-bg-deep">Hostel</option>
-                      <option value="pg" className="bg-bg-deep">PG / Co-living</option>
-                      <option value="corporate" className="bg-bg-deep">Corporate Cafeteria</option>
-                      <option value="hotel" className="bg-bg-deep">Hotel</option>
-                      <option value="institution" className="bg-bg-deep">Institution</option>
-                    </select>
+                      type="text"
+                      placeholder="Rahul Sharma"
+                      className="w-full px-4 py-3 rounded-xl bg-bg border border-border text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-primary/30 transition-all"
+                    />
                   </div>
                   <div>
-                    <label className="block text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2">Waste/Day</label>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] text-text-muted mb-2 font-medium">
+                      Email
+                    </label>
                     <input
-                      name="wastePerDay"
-                      type="text"
-                      placeholder="50 kg"
+                      name="email"
+                      required
+                      type="email"
+                      placeholder="you@institution.edu.in"
                       onChange={handleChange}
-                      value={form.wastePerDay}
-                      className="w-full px-4 py-3 rounded-sm bg-bg-deep border border-white/[0.08] text-sm text-white placeholder:text-text-subtle focus:outline-none focus:border-green-400/40 transition-all"
+                      value={form.email}
+                      className="w-full px-4 py-3 rounded-xl bg-bg border border-border text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-primary/30 transition-all"
                     />
                   </div>
                 </div>
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] text-text-muted mb-2 font-medium">
+                      Organization
+                    </label>
+                    <input
+                      name="orgName"
+                      required
+                      type="text"
+                      placeholder="Greenwood Hostel"
+                      onChange={handleChange}
+                      value={form.orgName}
+                      className="w-full px-4 py-3 rounded-xl bg-bg border border-border text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-primary/30 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] text-text-muted mb-2 font-medium">
+                      Type
+                    </label>
+                    <select
+                      name="orgType"
+                      value={form.orgType}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl bg-bg border border-border text-sm text-text focus:outline-none focus:border-primary/30 transition-all appearance-none"
+                    >
+                      <option value="hostel">Hostel</option>
+                      <option value="pg">PG / Co-living</option>
+                      <option value="corporate">Corporate Cafeteria</option>
+                      <option value="hotel">Hotel</option>
+                      <option value="institution">Institution</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2">Message</label>
+                  <label className="block text-[11px] uppercase tracking-[0.12em] text-text-muted mb-2 font-medium">
+                    Waste/Day (approx.)
+                  </label>
+                  <input
+                    name="wastePerDay"
+                    type="text"
+                    placeholder="50 kg"
+                    onChange={handleChange}
+                    value={form.wastePerDay}
+                    className="w-full px-4 py-3 rounded-xl bg-bg border border-border text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-primary/30 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] uppercase tracking-[0.12em] text-text-muted mb-2 font-medium">
+                    Message (optional)
+                  </label>
                   <textarea
                     name="message"
                     rows={3}
                     onChange={handleChange}
                     value={form.message}
                     placeholder="Tell us about your waste management needs..."
-                    className="w-full px-4 py-3 rounded-sm bg-bg-deep border border-white/[0.08] text-sm text-white placeholder:text-text-subtle focus:outline-none focus:border-green-400/40 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-bg border border-border text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-primary/30 transition-all resize-none"
                   />
                 </div>
 
-                <Button
+                <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold"
+                  className="w-full flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-bg bg-primary rounded-xl hover:bg-primary-dim transition-all duration-200 hover:shadow-[0_0_32px_rgba(0,230,118,0.25)] active:scale-[0.97]"
                 >
-                  <Send size={16} />
+                  <Send size={15} />
                   Submit Partnership Request
-                </Button>
+                </button>
               </form>
             )}
           </motion.div>

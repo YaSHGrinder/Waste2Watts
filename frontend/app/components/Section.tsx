@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 
 interface SectionProps {
   id?: string;
@@ -15,9 +15,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
         ref={ref}
         className={`relative ${bgMesh ? "mesh-green" : ""} ${className}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          {children}
-        </div>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 relative">{children}</div>
       </section>
     );
   }

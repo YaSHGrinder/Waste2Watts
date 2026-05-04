@@ -1,33 +1,36 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-syne",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   weight: ["300", "400", "500", "600", "700"],
 });
 
 const jetBrains = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Waste2Watts — Turn Food Waste Into Clean Energy",
+  title: "Waste2Watts — Turn Bio-Waste Into Clean Energy",
   description:
-    "Track your food waste impact. Power a sustainable future with biogas, fertilizer, and carbon credits.",
-  keywords: ["food waste", "biogas", "sustainability", "carbon credits", "waste to energy"],
+    "AI-powered waste-to-energy platform. We convert bio-waste into biogas, organic fertilizer, and tradeable carbon credits.",
+  keywords: [
+    "waste to energy", "biogas", "carbon credits",
+    "sustainability", "clean tech", "climate tech",
+  ],
 };
 
 export default function RootLayout({
@@ -36,10 +39,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable} ${jetBrains.variable} scroll-smooth`}>
-      <body className="min-h-full flex flex-col bg-[#060606] text-white antialiased font-[family-name:var(--font-dm-sans)]">
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrains.variable}`}
+    >
+      <body className="min-h-screen flex flex-col bg-bg text-text antialiased font-body">
         <Navbar />
-        <main className="flex-1 overflow-hidden">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <Analytics />
       </body>

@@ -1,15 +1,8 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import {
-  Trash2,
-  Factory,
-  Flame,
-  Sprout,
-  Leaf,
-  ArrowRight,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { Trash2, Factory, Flame, Leaf, ArrowRight } from "lucide-react";
 import Section from "./Section";
 
 const steps = [
@@ -18,180 +11,161 @@ const steps = [
     step: "01",
     title: "Collect",
     tagline: "Segregated waste from hostels & campuses",
-    description: "Daily pickup from mess kitchens. Pre-segregated organic waste goes straight to our digesters — zero sorting delays.",
-    accent: "text-amber-400",
-    borderAccent: "border-amber-400/20",
-    bgAccent: "bg-amber-400/5",
+    description:
+      "Daily pickup from mess kitchens. Pre-segregated organic waste goes straight to our digesters — zero sorting delays.",
+    color: "text-warning",
+    bg: "bg-warning/8",
+    border: "border-warning/15",
+    line: "from-warning/30",
   },
   {
     icon: Factory,
     step: "02",
     title: "Digest",
     tagline: "Anaerobic digestion in decentralized plants",
-    description: "Sealed digesters break down waste without oxygen, releasing methane-rich biogas and nutrient-dense digestate.",
-    accent: "text-sky-400",
-    borderAccent: "border-sky-400/20",
-    bgAccent: "bg-sky-400/5",
+    description:
+      "Sealed digesters break down waste without oxygen, releasing methane-rich biogas and nutrient-dense digestate.",
+    color: "text-success",
+    bg: "bg-success/8",
+    border: "border-success/15",
+    line: "from-success/30",
   },
   {
     icon: Flame,
     step: "03",
     title: "Generate",
     tagline: "Biogas & fertilizer output",
-    description: "Captured biogas replaces LPG in kitchens. Byproduct becomes premium organic fertilizer — two revenue streams.",
-    accent: "text-green-400",
-    borderAccent: "border-green-400/30",
-    bgAccent: "bg-green-400/5",
-    isHighlight: true,
+    description:
+      "Captured biogas replaces LPG in kitchens. Byproduct becomes premium organic fertilizer — two revenue streams.",
+    color: "text-primary",
+    bg: "bg-primary/8",
+    border: "border-primary/15",
+    line: "from-primary/30",
   },
   {
     icon: Leaf,
     step: "04",
     title: "Verify",
     tagline: "Carbon-credit-ready records",
-    description: "Every kg diverted is logged, verified, and converted into tradeable carbon credits. Measurable climate ROI.",
-    accent: "text-violet-400",
-    borderAccent: "border-violet-400/20",
-    bgAccent: "bg-violet-400/5",
+    description:
+      "Every kg diverted is logged, verified, and converted into tradeable carbon credits. Measurable climate ROI.",
+    color: "text-accent",
+    bg: "bg-accent/8",
+    border: "border-accent/15",
+    line: "from-accent/30",
   },
 ];
 
 export default function HowItWorks() {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
-    <Section
-      id="how-it-works"
-      ref={sectionRef}
-      className="section-standard overflow-hidden"
-      bgMesh
-    >
-      {/* Vertical accent line */}
-      <div className="hidden lg:block absolute left-[calc(50%+480px)] top-1/3 bottom-1/3 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+    <Section id="how-it-works" ref={sectionRef} className="section-tall mesh-green">
+      {/* Header */}
+      <div className="max-w-2xl mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-[18px] h-[2px] bg-primary" />
+            <span className="text-[11px] tracking-[0.2em] uppercase text-primary font-semibold font-display">
+              How It Works
+            </span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.03em] leading-[0.95] text-text">
+            From <span className="text-warning">Waste</span>
+            <span className="text-text-muted mx-2">→</span>
+            <span className="gradient-text">Value</span>
+          </h2>
+          <p className="mt-5 text-text-dim leading-relaxed">
+            We collect segregated food waste, convert it into biogas and organic
+            fertilizer, and log every output into carbon-credit-ready records.
+          </p>
+        </motion.div>
+      </div>
 
-      <div className={`${isInView ? "opacity-100" : "opacity-0"} transition-opacity duration-700`}>
-        {/* Header - asymmetric */}
-        <div className="mb-16 max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-[2px] h-8 bg-green-400" />
-              <span className="text-[11px] tracking-[0.25em] uppercase text-green-400 font-[family-name:var(--font-syne)] font-medium">
-                Operational Pipeline
-              </span>
-            </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.02em] leading-[0.95] text-text-heading">
-              From <span className="text-amber-400">Waste</span>
-              <span className="text-text-muted mx-3">→</span>
-              <span className="gradient-text">Value</span>
-            </h2>
-            <p className="mt-6 text-text-body max-w-2xl leading-relaxed">
-              We collect segregated food waste, convert it into biogas and organic
-              fertilizer, and log every output into carbon-credit-ready records.
-            </p>
-          </motion.div>
-        </div>
+      {/* Steps */}
+      <div className="relative">
+        {/* Vertical connector line */}
+        <div className="hidden lg:block absolute left-[calc(50%-0.5px)] top-0 bottom-0 w-[1px] bg-gradient-to-b from-border via-border to-transparent" />
 
-        {/* Process steps - asymmetric layout */}
-        <div className="space-y-6">
+        <div className="space-y-6 lg:space-y-0">
           {steps.map((step, i) => {
             const Icon = step.icon;
-            const isActive = activeStep === i;
             const isLeft = i % 2 === 0;
 
             return (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className={`flex items-start gap-6 group ${isLeft ? "" : "lg:flex-row-reverse"}`}
-                onMouseEnter={() => setActiveStep(i)}
-                onMouseLeave={() => setActiveStep(null)}
+                transition={{ delay: i * 0.12, duration: 0.6 }}
+                className={`relative lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center ${
+                  i > 0 ? "lg:mt-12" : ""
+                }`}
               >
-                {/* Step number - large background number */}
-                <div className="hidden lg:block flex-shrink-0 w-16 text-right">
-                  <span
-                    className={`font-[family-name:var(--font-syne)] text-6xl font-bold transition-colors duration-500 ${
-                      isActive ? step.accent : "text-white/[0.04]"
-                    }`}
-                  >
-                    {step.step}
-                  </span>
+                {/* Center dot on desktop */}
+                <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-bg border-2 border-primary/40 z-10" />
+
+                {/* Card */}
+                <div className={`${isLeft ? "lg:col-start-1" : "lg:col-start-2"}`}>
+                  <div className="surface-card rounded-2xl p-6 sm:p-8 hover:bg-card-hover hover:border-border-hover transition-all duration-300 group">
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className={`w-11 h-11 rounded-xl ${step.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon size={20} className={step.color} />
+                      </div>
+                      <div>
+                        <span className={`font-mono text-[11px] font-semibold ${step.color} opacity-60`}>
+                          {step.step}
+                        </span>
+                        <h3 className={`font-display text-lg font-semibold ${step.color}`}>
+                          {step.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-[11px] uppercase tracking-[0.15em] text-text-muted mb-2 font-medium">
+                      {step.tagline}
+                    </p>
+                    <p className="text-sm text-text-dim leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Card - sharp, no glass */}
-                <div
-                  className={`flex-1 max-w-2xl border transition-all duration-300 ${
-                    step.borderAccent
-                  } ${step.bgAccent} ${isActive ? "border-opacity-100" : "border-opacity-30 hover:border-opacity-60"} rounded-sm p-6 sm:p-8`}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div
-                      className={`w-10 h-10 rounded-sm flex items-center justify-center bg-bg-elevated border ${step.borderAccent} transition-transform duration-300 ${isActive ? "scale-110" : "group-hover:scale-105"}`}
-                    >
-                      <Icon size={20} className={step.accent} />
-                    </div>
-                    <span className={`font-mono text-[11px] ${step.accent} ${isActive ? "opacity-100" : "opacity-40"} transition-opacity`}>
-                      {step.step}
-                    </span>
-                  </div>
-                  <h3 className={`font-display text-lg font-semibold mb-1 ${step.accent}`}>
-                    {step.title}
-                  </h3>
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-text-muted mb-3">
-                    {step.tagline}
-                  </p>
-                  <p className="text-sm text-text-body leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
+                {/* Spacer for the other side */}
+                <div className={`hidden lg:block ${isLeft ? "lg:col-start-2" : "lg:col-start-1"}`} />
               </motion.div>
             );
           })}
         </div>
-
-        {/* Value chain strip - minimal horizontal */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 border border-white/[0.06] rounded-sm px-6 py-5 sm:px-8"
-        >
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-sm">
-            {[
-              { label: "Waste In", color: "text-amber-400" },
-              { label: "Digestion", color: "text-sky-400" },
-              { label: "Biogas", color: "text-green-400" },
-              { label: "Fertilizer", color: "text-emerald-400" },
-              { label: "Carbon Value", color: "text-violet-400" },
-            ].map((item, i) => (
-              <span key={item.label} className="flex items-center gap-2">
-                <span
-                  className={`font-medium text-xs tracking-wide ${item.color} ${
-                    activeStep !== null && i <= activeStep ? "opacity-100" : "opacity-40"
-                  } transition-opacity duration-300`}
-                >
-                  {item.label}
-                </span>
-                {i < 4 && (
-                  <ArrowRight
-                    size={10}
-                    className={`${activeStep !== null && i < activeStep ? "text-green-400/40" : "text-white/10"} transition-colors`}
-                  />
-                )}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
+
+      {/* Value chain strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+        className="mt-16 surface rounded-xl px-6 py-4"
+      >
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs">
+          {[
+            { label: "Waste In", color: "text-warning" },
+            { label: "Digestion", color: "text-success" },
+            { label: "Biogas", color: "text-primary" },
+            { label: "Fertilizer", color: "text-success" },
+            { label: "Carbon Value", color: "text-accent" },
+          ].map((item, i) => (
+            <span key={item.label} className="flex items-center gap-2">
+              <span className={`font-semibold ${item.color}`}>{item.label}</span>
+              {i < 4 && <ArrowRight size={10} className="text-text-faint" />}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </Section>
   );
 }

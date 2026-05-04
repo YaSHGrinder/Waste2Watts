@@ -1,11 +1,13 @@
 import { fetchSummary } from "@/lib/api";
 import HeroSection from "./components/HeroSection";
+import StatsStrip from "./components/StatsStrip";
 import ProblemSection from "./components/ProblemSection";
+import SolutionSection from "./components/SolutionSection";
 import HowItWorks from "./components/HowItWorks";
-import BeforeAfterCalculator from "./components/BeforeAfterCalculator";
-import AboutSection from "./components/AboutSection";
-import PartnerForm from "./components/PartnerForm";
 import DashboardPreview from "./components/DashboardPreview";
+import UseCases from "./components/UseCases";
+import FinalCTA from "./components/FinalCTA";
+import PartnerForm from "./components/PartnerForm";
 
 export default async function Home() {
   const summary = await fetchSummary();
@@ -13,11 +15,13 @@ export default async function Home() {
   return (
     <>
       <HeroSection summary={summary} />
+      <StatsStrip />
       <ProblemSection />
+      <SolutionSection />
       <HowItWorks />
-      <BeforeAfterCalculator />
       <DashboardPreview />
-      <AboutSection />
+      <UseCases />
+      <FinalCTA />
       <PartnerForm />
     </>
   );
