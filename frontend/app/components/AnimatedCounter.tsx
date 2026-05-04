@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useSpring } from "framer-motion";
+import { useInView } from "framer-motion";
 
 export default function AnimatedCounter({
   target,
@@ -15,27 +15,27 @@ export default function AnimatedCounter({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState("0");
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const motionValue = useSpring(0, { duration: duration * 1000 });
-  const [readout, setReadout] = useState("0");
 
   useEffect(() => {
-    if (inView) {
-      motionValue.set(target);
-    }
-  }, [inView, motionValue, target]);
-
-  // useTransform doesn't return a React-compatible value directly with useSpring
-  useEffect(() => {
-    const unsub = motionValue.on("change", () => {
-      setReadout(motionValue.get().toFixed(decimals) + suffix);
-    });
-    return () => unsub();
-  }, [motionValue, decimals, suffix]);
+    if (!inView) return;
+    let start = 0;
+    const startTime = performance.now();
+    const animate = (now: number) => {
+      const progress = Math.min((now - startTime) / (duration * 1000), 1);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = start + (target - start) * eased;
+      setDisplay(current.toFixed(decimals) + suffix);
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [inView, target, duration, decimals, suffix]);
 
   return (
-    <span ref={ref} className="inline-block tabular-nums">
-      {inView ? readout : `0${suffix}`}
+    <span ref={ref} className="inline-block font-mono-data tabular-nums">
+      {inView ? display : `0${suffix}`}
     </span>
   );
 }

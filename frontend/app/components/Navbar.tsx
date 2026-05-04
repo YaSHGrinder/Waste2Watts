@@ -27,25 +27,22 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg"
+            ? "bg-bg-deep/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-2 group"
-            >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-green-500/25 transition-shadow">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="w-8 h-8 rounded-sm bg-green-400 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-shadow">
                 <span className="text-sm font-bold text-black">W</span>
               </div>
-              <span className="text-lg font-semibold tracking-tight">
-                Waste<span className="gradient-text">2</span>Watts
+              <span className="text-lg font-semibold tracking-tight font-[family-name:var(--font-syne)]">
+                Waste<span className="text-green-400">2</span>Watts
               </span>
             </Link>
 
@@ -55,7 +52,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 text-sm text-neutral-400 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04] font-medium"
+                  className="px-4 py-2 text-sm text-text-muted hover:text-white transition-colors rounded-sm hover:bg-white/[0.03] font-medium"
                 >
                   {link.label}
                 </a>
@@ -66,13 +63,13 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/dashboard"
-                className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors font-medium"
+                className="text-sm text-text-muted hover:text-white transition-colors font-medium"
               >
                 Dashboard
               </Link>
               <a
                 href="#contact"
-                className="px-5 py-2.5 text-sm font-medium text-black bg-gradient-to-r from-green-400 to-green-500 rounded-full hover:from-green-300 hover:to-green-400 transition-all hover:shadow-lg hover:shadow-green-500/25"
+                className="px-5 py-2.5 text-sm font-semibold text-black bg-green-400 rounded-sm hover:bg-green-300 transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.25)] active:scale-[0.98] font-[family-name:var(--font-syne)]"
               >
                 Partner With Us
               </a>
@@ -81,7 +78,7 @@ export default function Navbar() {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-neutral-400 hover:text-white transition-colors"
+              className="lg:hidden p-2 text-text-muted hover:text-white transition-colors"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -96,7 +93,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-2 lg:hidden"
+            className="fixed inset-0 z-40 bg-bg-deep/95 backdrop-blur-xl flex flex-col items-center justify-center gap-2 lg:hidden"
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -106,7 +103,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
                 onClick={() => setMobileOpen(false)}
-                className="text-2xl font-medium text-neutral-300 hover:text-white py-3 transition-colors"
+                className="text-2xl font-medium text-text-body hover:text-white py-3 transition-colors font-[family-name:var(--font-syne)]"
               >
                 {link.label}
               </motion.a>
@@ -119,7 +116,8 @@ export default function Navbar() {
             >
               <Link
                 href="/dashboard"
-                className="block text-center w-48 px-6 py-3 text-sm font-medium text-black bg-gradient-to-r from-green-400 to-green-500 rounded-full"
+                className="block text-center w-48 px-6 py-3 text-sm font-semibold text-black bg-green-400 rounded-sm font-[family-name:var(--font-syne)]"
+                onClick={() => setMobileOpen(false)}
               >
                 Go to Dashboard
               </Link>

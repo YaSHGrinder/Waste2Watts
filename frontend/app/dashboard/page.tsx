@@ -234,9 +234,9 @@ export default function DashboardPage() {
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400">
-                    <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-                    Live Monitoring
+                  <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400">
+                    <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
+                    Pilot Simulation
                   </span>
                   <span className="rounded-full border border-white/[0.08] px-3 py-1 text-xs font-medium text-neutral-400">
                     1 TPD Capacity
