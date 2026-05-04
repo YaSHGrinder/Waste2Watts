@@ -1,4 +1,11 @@
 {
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "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",
+    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "openrouter/owl-alpha",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "tencent/hy3-preview:free",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "poolside/laguna-m.1:free"
+  },
   "permissions": {
     "allow": [
       "WebFetch(domain:www.unep.org)",
@@ -12,7 +19,20 @@
       "WebFetch(domain:www.bbc.com)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\" -Recurse -Name)",
+      "Bash(Sort-Object)",
+      "Bash(python3 skill-content *)",
+      "Bash(npm install *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\" -Recurse -File)",
+      "Bash(Select-Object FullName, Length)",
+      "Bash(Format-Table -AutoSize)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\components\\\\BeforeAfterCalculator.tsx\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\components\\\\CarbonCredits.tsx\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\components\\\\ImpactCalculator.tsx\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\components\\\\RevenueModel.tsx\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\yash\\\\Desktop\\\\Waste2Watts\\\\frontend\\\\app\\\\components\\\\TractionSection.tsx\" -Force)",
+      "Bash(npm run *)"
     ]
   }
 }
